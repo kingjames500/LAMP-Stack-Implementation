@@ -11,6 +11,7 @@ try {
     $scoreView = new ScoreboardView();
     $scores = $scoreView->scoreboardViewData(); // Already an array!
 
+
     $time = time();
 
     array_walk($scores['data'], function (&$user) use ($time) {

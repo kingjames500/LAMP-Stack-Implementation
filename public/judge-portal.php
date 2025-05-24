@@ -89,9 +89,7 @@
                 }
             })
             .catch(error => {
-                // err.message will now have a proper string message
-                let message = error.message || JSON.stringify(error);
-                showAlert('danger',  message);
+                showAlert('danger',  error.message);
             });
     }
 

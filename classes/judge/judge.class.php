@@ -4,7 +4,11 @@ class Judge extends databaseConnection {
     
     protected function fetchAllUsers(){
         try{
-            $query = $this->connection()->prepare("SELECT * FROM users;");
+            $query = $this->connection()->prepare("
+            SELECT users.*
+            FROM users
+            LEFT JOIN  scores ON users.id = scores.user_id
+            WHERE scores.user_id IS NULL;");
             
             if (!$query->execute()) {
                 return ApiResponse::internalServerError('We could not process your request, please try again later');

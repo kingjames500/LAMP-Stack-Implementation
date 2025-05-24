@@ -133,15 +133,18 @@
             }
 
             html += `
-                <div class="${rowClass} ${highlightClass}" data-user-id="${user.id}">
-                    <div class="row align-items-center">
-                        <div class="col-1 fw-bold">${rank}</div>
-                        <div class="col-5">${user.full_name}</div>
-                        <div class="col-3 fw-bold">${user.total_points}</div>
-                        <div class="col-3 text-muted">${new Date(user.last_updated).toLocaleTimeString()}</div>
-                    </div>
-                </div>
-            `;
+    <div class="${rowClass} ${highlightClass}" data-user-id="${user.id}">
+        <div class="row align-items-center">
+            <div class="col-1 fw-bold">${rank}</div>
+            <div class="col-5">
+                ${user.full_name} <small class="text-muted">(${user.id})</small>
+            </div>
+            <div class="col-3 fw-bold">${user.total_points}</div>
+            <div class="col-3 fw-semibold">${new Date(user.last_updated).toLocaleTimeString()}</div>
+        </div>
+    </div>
+`;
+
         });
 
         scoreboardBody.innerHTML = html;
