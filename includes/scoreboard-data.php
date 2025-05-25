@@ -21,5 +21,8 @@ try {
     echo json_encode($scores, JSON_PRETTY_PRINT);
 }
 catch (\Exception $error) {
-    echo json_encode(['error' => $error->getMessage()]);
+    return ApiResponse::internalServerError($error->getMessage());
+}
+catch (\Throwable $throwable){
+    return ApiResponse::internalServerError($throwable->getMessage());
 }

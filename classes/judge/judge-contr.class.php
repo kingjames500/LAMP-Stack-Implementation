@@ -5,47 +5,37 @@ class JudgeContr extends Judge {
     private $judgeId;
     private $scores;
 
-
-
+    // Constructor to initialize judgeId, userId, and score
     public function __construct($judgeId, $userId, $scores){
         $this->userId = $userId;
         $this->judgeId = $judgeId;
         $this->scores = $scores;
     }
 
+    // Checks if any of the values are empty
     private function checkIfEmpty(){
-        $results;
-
         if(empty($this->userId) || empty($this->judgeId) || empty($this->scores)){
-            $results = false;
+            return false;
         }
-        else {
-            $results = true;
-        }
-        return $results;
+        return true;
     }
 
+    // Checks if this judge has already scored this user
     private function checkIfUserScoresExist(){
-        $results;
-        if (!$this->checkIfAlreadyScored($this->userId, $this->judgeId)) {
-            $results = false;
-        }
-        else{
-            $results = true;
-        }
-        return $results;
+        return $this->checkIfAlreadyScored($this->userId, $this->judgeId);
     }
 
+    // Assigns a score to the user if validations pass
     public function assignScoresToUser(){
         if ($this->checkIfEmpty() === false) {
-            return ApiResponse::badRequest("values cannot be empty");
+            return ApiResponse::badRequest("Values cannot be empty");
         }
 
-        if ($this->checkIfUserScoresExist() === false) { 
+        if ($this->checkIfUserScoresExist() === false) {
             return ApiResponse::badRequest("You cannot score points twice to a single user");
         }
 
+        // If checks pass, assign the score
         return $this->assignUserScores($this->judgeId, $this->userId, $this->scores);
     }
-
 }

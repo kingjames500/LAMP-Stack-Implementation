@@ -1,7 +1,8 @@
 <?php
-class JudgeView extends Judge{
+class JudgeView extends Judge {
 
-    public function getAllUsers(){
+    // A public method that returns all users from the database
+    public function getAllUsers() {
         return $this->fetchAllUsers();
     }
 }

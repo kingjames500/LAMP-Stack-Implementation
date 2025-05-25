@@ -49,7 +49,7 @@
 
 
 
-### 4. **Assumptions I  made**
+### 3. **Assumptions I  made**
  - The admin can manually add judges even though there is no table admin on our database
  - I assumed that judges username are unique though they are not enforced at the DB level but at the classes where the logic is
  - There is no authentication and authorization system, that includes judges, admins and users(who want to view thier scores)
@@ -58,13 +58,13 @@
 - I assumed not to include my SQL queries on this mark down but I explained the relationships on the tables.
 
 
-### 5. **Design Choices**
+### 4. **Design Choices**
  - Used PHP object-Oriented Programming for better structure, readility, easier debugging, code quality and maintainability
   - Choose Bootstrap for rapid styling and responsive Layout
   - choose javascript for manipulating Document Object Models, validating and interactivity especially on the public score board
   - UUIDs for  primary keys to prevent quessworks.
    
-### 6. **Future Enhancements**
+### 5. **Future Enhancements**
   - implementing admin, judge and user authentication and authorization.
   - Add pagination and filters for user and score lists
   - Real- time score updates via Websockets

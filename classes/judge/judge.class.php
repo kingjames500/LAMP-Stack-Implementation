@@ -1,7 +1,8 @@
 <?php 
 
 class Judge extends databaseConnection {
-    
+
+    // this method gets all participant users from the database and only includes those who have not been scored any marks
     protected function fetchAllUsers(){
         try{
             $query = $this->connection()->prepare("
@@ -13,13 +14,11 @@ class Judge extends databaseConnection {
             if (!$query->execute()) {
                 return ApiResponse::internalServerError('We could not process your request, please try again later');
             }
-            
-            $users = $query->fetchAll(PDO::FETCH_ASSOC);
 
-
-            if(count($users) < 0) {
-                return ApiResponse::notFound("Users not found");
+            if ($query->rowCount() == 0) {
+                return  ApiResponse::notFound("No students were found");
             }
+            $users = $query->fetchAll(PDO::FETCH_ASSOC);
 
             return ApiResponse::ok("Students fetched successfully", $users);
         }
@@ -32,6 +31,9 @@ class Judge extends databaseConnection {
         
     }
 
+
+    // this method assigns scores to the participant users by the judges
+    //it takes in three parameters, $judgeId, $userId, $scores and return a message if successful
     protected function assignUserScores($judgeId, $userId, $scores){
         try {
             $query = $this->connection()->prepare("INSERT INTO scores(judge_id, user_id, points) VALUES(?,?,?);");
@@ -51,6 +53,8 @@ class Judge extends databaseConnection {
         }
     }
 
+
+    // This method is for checking if the participant user has been scored marks and return a bool value
     protected function checkIfAlreadyScored($userId)
     {
         $query = $this->connection()->prepare("SELECT * FROM scores WHERE user_id = ?;");

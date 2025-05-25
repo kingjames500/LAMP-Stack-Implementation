@@ -1,5 +1,5 @@
 <?php
-
+ // This class handles all our response, data and status code
 class ApiResponse {
 public static function ok($message, $data = []) {
 return self::success($message, $data, 200);
@@ -19,14 +19,14 @@ return [
 ];
 }
 
-    public static function error($message, $statusCode = 500) {
+    public static function error($message, $statusCode = null) {
         http_response_code($statusCode);
         $messages = is_array($message) ? $message : [$message];
 
         return [
             'status' => 'error',
             'statusCode' => $statusCode,
-            'message' => $messages
+            'messages' => $messages
         ];
     }
 
