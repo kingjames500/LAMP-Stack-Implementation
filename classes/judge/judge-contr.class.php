@@ -47,4 +47,5 @@ class JudgeContr extends Judge {
 
         return $this->assignUserScores($this->judgeId, $this->userId, $this->scores);
     }
+
 }

@@ -19,14 +19,17 @@ return [
 ];
 }
 
-public static function error($message, $statusCode = 500) {
-http_response_code($statusCode);
-return [
-'status' => 'error',
-'statusCode' => $statusCode,
-'message' => $message
-];
-}
+    public static function error($message, $statusCode = 500) {
+        http_response_code($statusCode);
+        $messages = is_array($message) ? $message : [$message];
+
+        return [
+            'status' => 'error',
+            'statusCode' => $statusCode,
+            'message' => $messages
+        ];
+    }
+
 
 public static function notFound($message) {
 return self::error($message, 404);
