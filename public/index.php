@@ -74,10 +74,9 @@
                 }
             })
             .catch(error => {
-                console.error('Fetch error:', error);
                 document.getElementById('scoreboardBody').innerHTML = `
                     <div class="list-group-item text-center py-5 text-danger">
-                        <p class="mt-2">Failed to load scoreboard. Please try again later.</p>
+                        <p class="mt-2">${error.message}</p>
                         <button onclick="loadScoreboard()" class="btn btn-primary mt-2">Retry</button>
                     </div>
                 `;

@@ -61,9 +61,6 @@
         const formData = new FormData(form);
         formData.append("judge_id", 'b6b89c30-37e5-11f0-8b8e-5c80b6639551');
 
-        for (const [key, value] of formData.entries()) {
-            console.log("checking form details", `${key}: ${value}`);
-        }
 
         fetch('../includes/score-user.php', {
             method: 'POST',
