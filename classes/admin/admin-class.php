@@ -59,4 +59,23 @@ class Admin extends databaseConnection
             return ApiResponse::internalServerError("Unexpected error: " . $th->getMessage());
         }
     }
+
+    // method for fetching all the judge id so that we can randomly pick them on the frontend
+    protected function fetchAllJudgesId(){
+        try {
+            $query = $this->connection()->prepare("SELECT id FROM judges;");
+            if (!$query->execute()) {
+                return ApiResponse::internalServerError('We could not process your request, please try again later');
+            }
+            if ($query->rowCount() == 0) {
+                return ApiResponse::notFound("No judges were found");
+            }
+            $judges = $query->fetchAll(PDO::FETCH_ASSOC);
+            return ApiResponse::ok("Judges fetched successfully", $judges);
+        } catch (\PDOException $exception){
+            return ApiResponse::internalServerError("there was an error with the connection!");
+        } catch (\Throwable $exception){
+            return ApiResponse::internalServerError("something went wrong!");
+        }
+    }
 }

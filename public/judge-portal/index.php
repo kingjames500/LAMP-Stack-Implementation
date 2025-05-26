@@ -58,12 +58,35 @@
             .catch((error) => showAlert('danger', 'Failed to load users' + error.message));
     }
 
+    // function for selecting a random judge id instead of having a prefixxed value
+    async function getRandomJudgeId() {
+        try {
+            const response = await fetch('../../includes/get-judgeId.php');
+
+
+            const result = await response.json();
+            if (result.status === 'success' && result.data.length > 0) {
+
+                const judges = result.data;
+                const randomJudgeId = judges[Math.floor(Math.random() * judges.length)];
+                return randomJudgeId;
+            } else {
+                throw new Error("now judges found");
+            }
+        } catch (error) {
+            console.error("Error fetching judge Id", error);
+            return null;
+        }
+    }
+
     // Submit score
-    function submitScore(event, userId) {
+    async function submitScore(event, userId) {
         event.preventDefault();
+        const randomJudgeId = await getRandomJudgeId();
+        if (!randomJudgeId) return;
         const form = event.target;
         const formData = new FormData(form);
-        formData.append("judge_id", 'b6b89c30-37e5-11f0-8b8e-5c80b6639551');
+        formData.append("judge_id", randomJudgeId);
 
 
         fetch('../../includes/score-user.php', {

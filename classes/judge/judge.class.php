@@ -78,28 +78,5 @@ class Judge extends databaseConnection {
         return $results;
     }
 
-//    protected  function authenticateJudge($username){
-//        $query = $this->connection()->prepare("SELECT * FROM judges WHERE username = ?;");
-//
-//        if(!$query->execute(array($username))){
-//            return ApiResponse::internalServerError("there was an error with the connection!");
-//        }
-//
-//        $judge = $query->fetch(PDO::FETCH_ASSOC);
-//
-//        if (!$judge){
-//            return ApiResponse::notFound("Judge not found");
-//        }
-//
-//        if (session_status() == PHP_SESSION_NONE) {
-//            session_start();
-//        }
-//
-//        $_SESSION['judgeId'] = $judge['id'];
-//        $_SESSION['username'] = $judge['username'];
-//        $_SESSION['score'] = $judge['score'];
-//
-//        return ApiResponse::ok("login successfully");
-//
-//    }
+
 }
