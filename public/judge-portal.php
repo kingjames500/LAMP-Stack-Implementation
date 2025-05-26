@@ -28,7 +28,7 @@
 
     // Fetch users and display
     function fetchUsers() {
-        fetch("https://lampstack-gfb7bffwa2hrarg6.southafricanorth-01.azurewebsites.net/includes/get-users.php")
+        fetch("./includes/get-users.php")
             .then(res => res.json())
             .then(data => {
                 const usersList = document.getElementById('usersList');
@@ -62,10 +62,10 @@
         formData.append("judge_id", 'b6b89c30-37e5-11f0-8b8e-5c80b6639551');
 
 
-        fetch('https://lampstack-gfb7bffwa2hrarg6.southafricanorth-01.azurewebsites.net/includes/score-user.php', {
-            method: 'POST',
-            body: formData
-        })
+        fetch('./includes/score-user.php', {
+                method: 'POST',
+                body: formData
+            })
             .then(async res => {
                 if (!res.ok) {
                     // parse the error response JSON
@@ -86,7 +86,7 @@
                 }
             })
             .catch(error => {
-                showAlert('danger',  error.message);
+                showAlert('danger', error.message);
             });
     }
 

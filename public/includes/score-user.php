@@ -6,7 +6,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Include required files for database connection and judge logic
-require_once  "../classes/traits/ApiResponse.php";
+require_once "../classes/traits/ApiResponse.php";
 require_once "../classes/database/connection-class.php";
 require_once "../classes/judge/judge.class.php";
 require_once "../classes/judge/judge-view.class.php";
