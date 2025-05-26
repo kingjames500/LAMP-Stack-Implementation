@@ -20,6 +20,7 @@ $judgeView = new JudgeView();
 // Call the method to get all users and store the response
 $response = $judgeView->getAllUsers();
 
+
 // Set the header to return JSON data
 header('Content-Type: application/json');
 

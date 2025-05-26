@@ -1,9 +1,9 @@
 <?php
-require "../classes/traits/ApiResponse.php";
-require_once "../classes/database/connection-class.php";
-require_once "../classes/admin/admin-class.php";
-require_once "../classes/admin/admin-view.class.php";
-require_once "../classes/admin/admin-contr.class.php";
+require "../../classes/traits/ApiResponse.php";
+require_once "../../classes/database/connection-class.php";
+require_once "../../classes/admin/admin-class.php";
+require_once "../../classes/admin/admin-view.class.php";
+require_once "../../classes/admin/admin-contr.class.php";
 
 $alertType = "";
 $message = "";
@@ -49,6 +49,9 @@ $allJudges = $response['data'] ?? [];
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4">Admin Panel - Judge Management</h1>
+        <div class="text-center mb-4">
+            <a href="/Lampstackimplementation/public" class="btn btn-outline-secondary">Back to Scoring</a>
+        </div>
 
         <?php if (!empty($message)) : ?>
         <div class="alert alert-<?= $alertType ?> alert-dismissible fade show" role="alert">

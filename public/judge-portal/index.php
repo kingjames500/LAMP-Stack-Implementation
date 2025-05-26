@@ -10,6 +10,10 @@
 <body class="bg-light">
     <div class="container mt-5">
         <h2 class="text-center mb-4">Judge Scoring Portal</h2>
+        <div class="text-center mb-4">
+
+            <a href="/Lampstackimplementation/public" class="btn btn-outline-secondary">scoring</a>
+        </div>
         <div id="alertPlaceholder"></div>
         <div id="usersList" class="row gy-3">
             <!-- Users will be inserted here -->
@@ -28,7 +32,7 @@
 
     // Fetch users and display
     function fetchUsers() {
-        fetch("./includes/get-users.php")
+        fetch("../../includes/get-users.php")
             .then(res => res.json())
             .then(data => {
                 const usersList = document.getElementById('usersList');
@@ -62,7 +66,7 @@
         formData.append("judge_id", 'b6b89c30-37e5-11f0-8b8e-5c80b6639551');
 
 
-        fetch('./includes/score-user.php', {
+        fetch('../../includes/score-user.php', {
                 method: 'POST',
                 body: formData
             })

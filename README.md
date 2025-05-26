@@ -38,6 +38,9 @@
     - Click the admin button on the apache   service   and you will be redirected to a browser with   your web application running or
     visit [click here to open project on browser](http://localhost)
 
+#### 1.5 **System  Validations**
+- All my form validation from the backend are found on the <name-contr.class.php> file.
+
 
 ### 2. **Database Schema Structure and Relationships**
    - For Database schema you can check the database.sql on the root folder of the project

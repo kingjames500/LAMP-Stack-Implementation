@@ -45,7 +45,13 @@
 
 <body class="bg-light">
     <div class="container py-5">
+
         <h1 class="text-center mb-4">Live Scoreboard</h1>
+        <div class="text-center mb-4">
+            <a href="/Lampstackimplementation/public/judge-portal" class="btn btn-outline-primary me-2">Judge Portal</a>
+            <a href="/Lampstackimplementation/public/admin" class="btn btn-outline-secondary">Admin Panel</a>
+        </div>
+
         <div class="row justify-content-center mb-3">
             <div class="col-md-6">
                 <div class="input-group">
@@ -89,19 +95,20 @@
     let lastUpdateTime = null;
 
     function loadScoreboard() {
-        fetch('./includes/scoreboard-data.php')
+        fetch('../includes/scoreboard-data.php')
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
+                    console.log('Scores loaded successfully:', data.data);
                     updateScoreboard(data.data);
                 } else {
-                    console.error('Error loading scores:', data.message);
+                    console.log('Error loading scores:', data.messages);
                 }
             })
             .catch(error => {
                 document.getElementById('scoreboardBody').innerHTML = `
                     <div class="list-group-item text-center py-5 text-danger">
-                        <p class="mt-2">${error.message}</p>
+                        <p class="mt-2"></p>
                         <button onclick="loadScoreboard()" class="btn btn-primary mt-2">Retry</button>
                     </div>
                 `;

@@ -18,9 +18,12 @@ class Judge extends databaseConnection {
             if ($query->rowCount() == 0) {
                 return  ApiResponse::notFound("No students were found");
             }
+            
             $users = $query->fetchAll(PDO::FETCH_ASSOC);
+            
 
             return ApiResponse::ok("Students fetched successfully", $users);
+            
         }
         catch(\PDOException $error){
             return ApiResponse::internalServerError($error->getMessage());
