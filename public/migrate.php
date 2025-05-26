@@ -7,13 +7,10 @@ $host = 'lamp-server.mysql.database.azure.com'; // Or your Azure DB host
 $dbname = 'portal';
 $username = 'tkytvubhla';
 $password = 'oSENi$ZDRs3b3iR6';
-$options = [
-    PDO::MYSQL_ATTR_SSL_CA => __DIR__ . '../cert/DigiCertGlobalRootCA.crt.pem',
-    PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
-];
+
 
 try {
-    $pdo = new PDO("mysql:host=$host", $username, $password, $options);
+    $pdo = new PDO("mysql:host=$host", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Create Database if not exists
